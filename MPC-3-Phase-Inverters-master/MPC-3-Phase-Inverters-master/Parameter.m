@@ -1,6 +1,6 @@
 clc
 
-Vref = 15; 
+Vref = 12; 
 Cfilter = 220e-6; 
 Lfilter = 10e-3; 
 Vdc = 24; 
