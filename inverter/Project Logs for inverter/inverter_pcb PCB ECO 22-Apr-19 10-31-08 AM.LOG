@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=PA8 Pin=R5-2
+Removed Pin From Net: NetName=PB13 Pin=R11-2
+Removed Pin From Net: NetName=PB13 Pin=R13-1
+Removed Pin From Net: NetName=PA10 Pin=R23-2
+Removed Pin From Net: NetName=PB15 Pin=R29-2
+Removed Pin From Net: NetName=PB15 Pin=R31-1
+Added Pin To Net: NetName=PA10 Pin=R5-2
+Added Pin To Net: NetName=PB15 Pin=R11-2
+Added Pin To Net: NetName=PB15 Pin=R13-1
+Added Pin To Net: NetName=PA8 Pin=R23-2
+Added Pin To Net: NetName=PB13 Pin=R29-2
+Added Pin To Net: NetName=PB13 Pin=R31-1
+Added Member To Class: ClassName=inverter_sch Member=Component Q4 Y2
+Added Room: Name=inverter_sch

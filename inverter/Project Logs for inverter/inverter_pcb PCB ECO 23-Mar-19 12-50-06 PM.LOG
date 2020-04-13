@@ -1,0 +1,3 @@
+Added Component: Designator=U?(STM32KIT)
+Add component. Clean all parameters for all variants
+Added Member To Class: ClassName=inverter_sch Member=Component U? Kit stm32f103
