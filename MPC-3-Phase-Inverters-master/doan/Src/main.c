@@ -57,19 +57,21 @@ UART_HandleTypeDef huart1;
 /* USER CODE BEGIN PV */
 int8_t f = 50;
 int8_t Vref = 15;
-int8_t Vdc  = 24;
+int8_t Vdc = 24;
 float Cfilter = 0.00022, Lfilter = 0.01;
 
-uint8_t states[8][3] = {{1,0,0},{1,1,0},{0,1,0},{0,1,1},{0,0,1},{1,0,1},{1,1,1}};
-float_t fz = 10000;
+uint8_t states[8][3] = {{1, 0, 0}, {1, 1, 0}, {0, 1, 0}, {0, 1, 1}, {0, 0, 1}, {1, 0, 1}, {1, 1, 1}};
+//Frequency cut-off
+float_t fz = 20000;
 uint16_t ADC_Read[6];
-float_t t_ref = 0,omega;
-float_t Vref_Re,Vref_Im;
+float_t Va, Vb, Vc, Ia, Ib, Ic;
+float_t t_ref = 0, omega;
+float_t Vref_Re, Vref_Im;
 //Uart
 char Rx_data;
 char RX_Buffer[100];
-const char c[2]="/";
-char * token;
+const char c[2] = "/";
+char *token;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -83,11 +85,11 @@ static void MX_USART1_UART_Init(void);
 static void MX_TIM4_Init(void);
 /* USER CODE BEGIN PFP */
 #ifdef __GNUC__
-  /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
+/* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
      set to 'Yes') calls __io_putchar() */
-  #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 #else
-  #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif /* __GNUC__ */
 /**
   * @brief  Retargets the C library printf function to the USART.
@@ -99,55 +101,67 @@ PUTCHAR_PROTOTYPE
   /* Place your implementation of fputc here */
   /* e.g. write a character to the EVAL_COM1 and Loop until the end of transmission */
   HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
-  
+
   return ch;
 }
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-float_t Aq[4] = {0.99092,-0.01994,0.90634,0.99092};
-float_t Bq[2] = {0.01994,0.00908};
-float_t Bdq[2] = {0.00918,-0.90634};
-float_t g_opt = 10000;
-float_t	V_Re,If_Re,V_Im ,If_Im ;
-float_t V_old_Re = 0,V_old_Im = 0,If_old_Re = 0,If_old_Im = 0;
+float_t Aq[4] = {0.99092, -0.01994, 0.90634, 0.99092};
+float_t Bq[2] = {0.01994, 0.00908};
+float_t Bdq[2] = {0.00918, -0.90634};
+float_t g_opt;
+float_t Vc_sensor_Re, Ifilter_sensor_Re, Vc_sensor_Im, Ifilter_sensor_Im;
+float_t V_old_Re = 0, V_old_Im = 0, If_old_Re = 0, If_old_Im = 0;
 _Bool x_opt[3];
-float Calc_Real(float_t x, float_t y,float_t z)
-{	
-	return ((2*x - y -z)/3);
+float Calc_Real(float_t x, float_t y, float_t z)
+{
+  return ((2 * x - y - z) / 3);
 }
-float Calc_Image(float_t y,float_t z)
-{	
-	return ((y -z)*0.57735);
+float Calc_Image(float_t y, float_t z)
+{
+  return ((y - z) * 0.57735);
 }
+float Calc_Voltage_ADC(uint16_t x)
+{
+  return x;
+}
+float Calc_Current_ADC(uint16_t x)
+{
+  return x;
+}
+float_t Io_Re,Io_Im,Vc_Temp_Re,Vc_Temp_Im;
+float_t Sw_Re,Sw_Im,G,Vc_Re,Vc_Im,Vi_Re,Vi_Im;
 void MPC_control()
-{	
-	V_Re = (float_t)Calc_Real(Va,Vb,Vc);
-	If_Re = (float_t)Calc_Real(Ia,Ib,Ic);
-	V_Im = (float_t)Calc_Image(Vb,Vc);
-	If_Im = (float_t)Calc_Image(Ib,Ic);	
-	Io_Re = If_old_Re - (Cfilter*fz)*((V_Re-V_old_Re);
-	Io_Im = If_old_Im - (Cfilter*fz)*((V_Im-V_old_Im);
-	Vcl_Temp_Re = Aq[2]*If_Re+ Aq[3]*V_Re+ Bdq[1]*Io_Re;
-	Vcl_Temp_Im = Aq[2]*If_Im+ Aq[3]*V_Im+ Bdq[1]*Io_Im;
+{
+  Vc_sensor_Re = (float_t)Calc_Real(Va, Vb, Vc);
+  Ifilter_sensor_Re = (float_t)Calc_Real(Ia, Ib, Ic);
+  Vc_sensor_Im = (float_t)Calc_Image(Vb, Vc);
+  Ifilter_sensor_Im = (float_t)Calc_Image(Ib, Ic);
+  Io_Re = If_old_Re - (Cfilter*fz)*(Vc_sensor_Re-V_old_Re);
+	Io_Im = If_old_Im - (Cfilter*fz)*(Vc_sensor_Im-V_old_Im);
+	Vc_Temp_Re = Aq[2]*Ifilter_sensor_Re+ Aq[3]*Vc_sensor_Re+ Bdq[1]*Io_Re;
+	Vc_Temp_Im = Aq[2]*Ifilter_sensor_Im+ Aq[3]*Vc_sensor_Im+ Bdq[1]*Io_Im;
+	V_old_Im = Vc_sensor_Im;
+	V_old_Re = Vc_sensor_Re;
 	for(int k=0;k<=7;k++)
 	{
-		Sw_Re = Calc_Real(states[k][0],states[k][1],states[k][2]);
-		Sw_Im = Calc_Image(states[k][1],states[k][2]);
-		Vi_Re = Vdc*Sw_Re;
-		Vi_Im = Vdc*Sw_Im;
-		Vcl_Re = Vcl_Temp_Re + Bq[1] * Vi_Re;
-		Vcl_Im = Vcl_Temp_Im + Bq[1] * Vi_Im;
-		
-		G = (Vref_Re - Vcl_Re)^2+(Vref_Im - Vcl_Im)^2;
-		if (G < g_opt)
-		{
-			g_opt = G;
-			x_opt[0] = (_Bool)states[k][0];
-			x_opt[1] = (_Bool)states[k][1];
-			x_opt[2] = (_Bool)states[k][2];
-		}
+    Sw_Re = Calc_Real(states[k][0], states[k][1], states[k][2]);
+    Sw_Im = Calc_Image(states[k][1], states[k][2]);
+    Vi_Re = Vdc * Sw_Re;
+    Vi_Im = Vdc * Sw_Im;
+    Vc_Re = Vc_Temp_Re + Bq[1] * Vi_Re;
+    Vc_Im = Vc_Temp_Im + Bq[1] * Vi_Im;
+
+    G = (Vref_Re - Vc_Re)*(Vref_Re - Vc_Re) + (Vref_Im - Vc_Im)*(Vref_Im - Vc_Im);
+    if (G < g_opt)
+    {
+      g_opt = G;
+      x_opt[0] = (_Bool)states[k][0];
+      x_opt[1] = (_Bool)states[k][1];
+      x_opt[2] = (_Bool)states[k][2];
+    }
 	}
 	HAL_GPIO_WritePin(SW1_GPIO_Port,SW1_Pin,x_opt[0]);
 	HAL_GPIO_WritePin(SW2_GPIO_Port,SW2_Pin,x_opt[1]);
@@ -155,22 +169,29 @@ void MPC_control()
 }
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if(htim->Instance ==htim2.Instance)
-	{
-		HAL_ADC_Start_DMA(&hadc1,(uint32_t *)ADC_Read,6);
-	}
-	if(htim->Instance == htim4.Instance)
-	{
-		omega = 2.0*PI*f;
-		Vref_Re = (float_t)((2*Vref*sin(omega*t_ref)- Vref*sin(omega*t_ref + 2*PI/3) - Vref*sin(t_ref*omega -2*PI/3))/3);
-		Vref_Im = (float_t)((Vref*sin(omega*t_ref + 2*PI/3) - Vref*sin(t_ref*omega -2*PI/3))*0.57735);
-		t_ref += 1/fz;
-		if(t_ref == 1/fz) t_ref = 0;		
-	}
-	if(htim->Instance == htim3.Instance)
-	{
-		MPC_control();
-	}
+  if (htim->Instance == htim2.Instance)
+  {
+    HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC_Read, 6);
+    Va = Calc_Voltage_ADC(ADC_Read[0]);
+    Vb = Calc_Voltage_ADC(ADC_Read[1]);
+    Vc = Calc_Voltage_ADC(ADC_Read[2]);
+    Ia = Calc_Current_ADC(ADC_Read[3]);
+    Ib = Calc_Current_ADC(ADC_Read[4]);
+    Ic = Calc_Current_ADC(ADC_Read[5]);
+  }
+  if (htim->Instance == htim4.Instance)
+  {
+    omega = 2.0 * PI * f;
+    Vref_Re = (float_t)((2 * Vref * sin(omega * t_ref) - Vref * sin(omega * t_ref + 2 * PI / 3) - Vref * sin(t_ref * omega - 2 * PI / 3)) / 3);
+    Vref_Im = (float_t)((Vref * sin(omega * t_ref + 2 * PI / 3) - Vref * sin(t_ref * omega - 2 * PI / 3)) * 0.57735);
+    t_ref += 1 / fz;
+    if (t_ref == 1 / fz)
+      t_ref = 0;
+  }
+  if (htim->Instance == htim3.Instance)
+  {
+    MPC_control();
+  }
 }
 
 /* USER CODE END 0 */
@@ -210,9 +231,9 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-	HAL_TIM_Base_Start_IT(&htim2);
-	HAL_TIM_Base_Start_IT(&htim3);
-	HAL_TIM_Base_Start_IT(&htim4);
+  HAL_TIM_Base_Start_IT(&htim2);
+  HAL_TIM_Base_Start_IT(&htim3);
+  HAL_TIM_Base_Start_IT(&htim4);
 
   /* USER CODE END 2 */
 
@@ -256,8 +277,7 @@ void SystemClock_Config(void)
   }
   /** Initializes the CPU, AHB and APB busses clocks 
   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -356,7 +376,6 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
-
 }
 
 /**
@@ -401,7 +420,6 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 2 */
 
   /* USER CODE END TIM2_Init 2 */
-
 }
 
 /**
@@ -446,7 +464,6 @@ static void MX_TIM3_Init(void)
   /* USER CODE BEGIN TIM3_Init 2 */
 
   /* USER CODE END TIM3_Init 2 */
-
 }
 
 /**
@@ -491,7 +508,6 @@ static void MX_TIM4_Init(void)
   /* USER CODE BEGIN TIM4_Init 2 */
 
   /* USER CODE END TIM4_Init 2 */
-
 }
 
 /**
@@ -524,13 +540,12 @@ static void MX_USART1_UART_Init(void)
   /* USER CODE BEGIN USART1_Init 2 */
 
   /* USER CODE END USART1_Init 2 */
-
 }
 
 /** 
   * Enable DMA controller clock
   */
-static void MX_DMA_Init(void) 
+static void MX_DMA_Init(void)
 {
 
   /* DMA controller clock enable */
@@ -540,7 +555,6 @@ static void MX_DMA_Init(void)
   /* DMA2_Stream0_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
-
 }
 
 /**
@@ -558,15 +572,14 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, SW1_Pin|SW2_Pin|SW3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOD, SW1_Pin | SW2_Pin | SW3_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : SW1_Pin SW2_Pin SW3_Pin */
-  GPIO_InitStruct.Pin = SW1_Pin|SW2_Pin|SW3_Pin;
+  GPIO_InitStruct.Pin = SW1_Pin | SW2_Pin | SW3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
-
 }
 
 /* USER CODE BEGIN 4 */
@@ -585,7 +598,7 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.
@@ -594,7 +607,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(uint8_t *file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
