@@ -1,3 +1,0 @@
-Removed Pin From Net: NetName=5V Pin=C_5V_out-1
-Removed Pin From Net: NetName=GND Pin=C_5V_out-2
-Removed Member From Class: ClassName=inverter_sch Member=C_5V_out
