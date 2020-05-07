@@ -277,7 +277,8 @@ void SystemClock_Config(void)
   }
   /** Initializes the CPU, AHB and APB busses clocks 
   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -376,6 +377,7 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
+
 }
 
 /**
@@ -420,6 +422,7 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 2 */
 
   /* USER CODE END TIM2_Init 2 */
+
 }
 
 /**
@@ -464,6 +467,7 @@ static void MX_TIM3_Init(void)
   /* USER CODE BEGIN TIM3_Init 2 */
 
   /* USER CODE END TIM3_Init 2 */
+
 }
 
 /**
@@ -508,6 +512,7 @@ static void MX_TIM4_Init(void)
   /* USER CODE BEGIN TIM4_Init 2 */
 
   /* USER CODE END TIM4_Init 2 */
+
 }
 
 /**
@@ -540,12 +545,13 @@ static void MX_USART1_UART_Init(void)
   /* USER CODE BEGIN USART1_Init 2 */
 
   /* USER CODE END USART1_Init 2 */
+
 }
 
 /** 
   * Enable DMA controller clock
   */
-static void MX_DMA_Init(void)
+static void MX_DMA_Init(void) 
 {
 
   /* DMA controller clock enable */
@@ -555,6 +561,7 @@ static void MX_DMA_Init(void)
   /* DMA2_Stream0_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+
 }
 
 /**
@@ -572,14 +579,18 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, SW1_Pin | SW2_Pin | SW3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOD, SW4_Pin|SW5_Pin|SW6_Pin|SW1_Pin 
+                          |SW2_Pin|SW3_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : SW1_Pin SW2_Pin SW3_Pin */
-  GPIO_InitStruct.Pin = SW1_Pin | SW2_Pin | SW3_Pin;
+  /*Configure GPIO pins : SW4_Pin SW5_Pin SW6_Pin SW1_Pin 
+                           SW2_Pin SW3_Pin */
+  GPIO_InitStruct.Pin = SW4_Pin|SW5_Pin|SW6_Pin|SW1_Pin 
+                          |SW2_Pin|SW3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */
@@ -598,7 +609,7 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef USE_FULL_ASSERT
+#ifdef  USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.
@@ -607,7 +618,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(uint8_t *file, uint32_t line)
-{
+{ 
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
