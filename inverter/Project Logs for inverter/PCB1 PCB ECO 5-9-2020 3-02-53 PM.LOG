@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=GND Pin=R50-1
+Removed Pin From Net: NetName=GND_1 Pin=R50-2
+Change Component Footprint: Designator=R50 Old Footprint=RES-SMD-1206 New Footprint=RES-1W
+Change Component Comment : Designator=R50 Old Comment=0 ohm New Comment=0hm
+Change component parameters (AddParameter): Name = "Class"; Value = "Passive"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Generic Components"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Published"; Value = "08/06/2000"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Hobart Technology Centre"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SubClass"; Value = "R"; VariantName = "[No Variations]"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Class"; Value = "Passive"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Generic Components"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Published"; Value = "08/06/2000"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Hobart Technology Centre"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SubClass"; Value = "R"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND_1 Pin=R50-1
+Added Pin To Net: NetName=GND Pin=R50-2
+Added Room: Name=KIT_STM32F4
+Added Room: Name=Sheet1
+Added Room: Name=Sheet2
+Added Room: Name=Source

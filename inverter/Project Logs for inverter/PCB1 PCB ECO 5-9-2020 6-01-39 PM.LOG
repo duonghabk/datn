@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=Net4_2 Pin=L4-1
+Removed Pin From Net: NetName=15V Pin=L4-2
+Removed Member From Class: ClassName=Source Member=L9
+Change Component Footprint: Designator=L5 Old Footprint=INDPM120120X800N New Footprint=L01
+Change Component Comment : Designator=L9 Old Comment=150mH New Comment=
+Change Component Comment : Designator=L5 Old Comment=CDRH127NP New Comment=
+Change Component Designator: OldDesignator=L9 NewDesignator=L4
+Change component parameters (AddParameter): Name = "Value"; Value = "150 mH"; VariantName = "[No Variations]"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Value"; Value = "150 mH"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Net4_2 Pin=L4-1
+Added Pin To Net: NetName=15V Pin=L4-2
+Added Member To Class: ClassName=Source Member=Component R50 0 ohm

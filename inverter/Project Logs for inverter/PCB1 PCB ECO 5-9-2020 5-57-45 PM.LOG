@@ -1,0 +1,11 @@
+Add component (AddParameter): Name = "Value"; Value = "150 mH"; VariantName = "[No Variations]"
+Added Component: Designator=L8(L-DIP-M-8)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "150 mH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "150 mH"; VariantName = "[No Variations]"
+Added Component: Designator=L10(L-DIP-M-7.8)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "150 mH"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=Source Member=Component L8 L-DIP-1
+Added Member To Class: ClassName=Source Member=Component L10 L-DIP-1
+Added Member To Class: ClassName=Source Member=Component R50 0 ohm

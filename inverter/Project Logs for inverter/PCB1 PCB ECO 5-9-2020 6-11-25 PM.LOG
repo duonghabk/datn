@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=15V Pin=C21-1
+Removed Pin From Net: NetName=GND Pin=C21-2
+Removed Member From Class: ClassName=Source Member=C?
+Change Component Designator: OldDesignator=C? NewDesignator=C21
+Added Pin To Net: NetName=15V Pin=C21-1
+Added Pin To Net: NetName=GND Pin=C21-2
+Added Member To Class: ClassName=Source Member=Component R50 0 ohm

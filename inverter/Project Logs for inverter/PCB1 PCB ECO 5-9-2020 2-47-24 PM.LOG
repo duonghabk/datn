@@ -1,0 +1,129 @@
+Removed Pin From Net: NetName=NetC7_2 Pin=C7-3
+Removed Pin From Net: NetName=NetC7_2 Pin=C10-1
+Removed Pin From Net: NetName=GND Pin=C15-1
+Removed Pin From Net: NetName=1.6V Pin=C15-2
+Removed Pin From Net: NetName=GND Pin=C16-1
+Removed Pin From Net: NetName=1.6V Pin=C16-2
+Removed Pin From Net: NetName=GND Pin=C22-2
+Removed Pin From Net: NetName=GND Pin=C25-2
+Removed Pin From Net: NetName=GND Pin=C26-2
+Removed Pin From Net: NetName=GND Pin=diot1-1
+Removed Pin From Net: NetName=NetC7_1 Pin=IC2-1
+Removed Pin From Net: NetName=NetC7_2 Pin=IC4-1
+Removed Pin From Net: NetName=GND Pin=J1-P1
+Removed Pin From Net: NetName=5V Pin=J1-P3
+Removed Pin From Net: NetName=NetC7_1 Pin=J1-P11
+Removed Pin From Net: NetName=NetC7_2 Pin=J1-P15
+Removed Pin From Net: NetName=NetIC1_5 Pin=J1-P42
+Removed Pin From Net: NetName=NetIC1_2 Pin=J1-P43
+Removed Pin From Net: NetName=NetIC1_6 Pin=J1-P44
+Removed Pin From Net: NetName=NetIC1_3 Pin=J1-P45
+Removed Pin From Net: NetName=NetIC1_7 Pin=J1-P46
+Removed Pin From Net: NetName=NetIC1_4 Pin=J1-P47
+Removed Pin From Net: NetName=GND Pin=J1-P51
+Removed Pin From Net: NetName=NetIC1_10 Pin=J1-P87
+Removed Pin From Net: NetName=NetC7_2 Pin=L3-2
+Removed Pin From Net: NetName=GND Pin=Q4-3
+Removed Pin From Net: NetName=GND Pin=Q5-3
+Removed Pin From Net: NetName=GND Pin=Q6-3
+Removed Pin From Net: NetName=GND Pin=R9-1
+Removed Pin From Net: NetName=NetC7_1 Pin=R22-1
+Removed Pin From Net: NetName=NetC7_2 Pin=R43-1
+Removed Pin From Net: NetName=NetC7_2 Pin=R46-1
+Removed Pin From Net: NetName=GND Pin=VR1-3
+Removed Member From Class: ClassName=Sheet2 Member=C15
+Removed Member From Class: ClassName=Sheet2 Member=C16
+Removed Member From Class: ClassName=Sheet1 Member=IC5
+Change Component Comment : Designator=R10 Old Comment=1K New Comment=1-1625873-0
+Change Component Designator: OldDesignator=1 NewDesignator=RS1
+Change Component Designator: OldDesignator=2 NewDesignator=RS2
+Change Component Designator: OldDesignator=3 NewDesignator=RS3
+Change component parameters (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MF"; Value = "TE Connectivity AMP Connectors"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MP"; Value = "RES KIT LR0204R"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/RES%20KIT%20LR0204R/TE%20Connectivity/view-part/3223324/?ref=snap"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "TE_purchase_URL"; Value = "https://www.te.com/usa-en/product-1-1625873-0.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MF"; Value = "TE Connectivity AMP Connectors"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MP"; Value = "RES KIT LR0204R"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/RES%20KIT%20LR0204R/TE%20Connectivity/view-part/3223324/?ref=snap"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "TE_purchase_URL"; Value = "https://www.te.com/usa-en/product-1-1625873-0.html?te_bu=Cor&te_type=disp&te_campaign=seda_glo_cor-seda-global-disp-prtnr-fy19-seda-model-bom-cta_sma-317_1&elqCampaignId=32493"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1 Description"; Value = "Manufacturer"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2 Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://katalog.we-online.de/em/datasheet/6130xx143121.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Created by"; Value = "Karrer Zheng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Created Date"; Value = "29 March 2013"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "W¨¹rth Elektronik eiSos GmbH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "NoPins"; Value = "04"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "partNo"; Value = "613004143121"; VariantName = "[No Variations]"
+Added Component: Designator=UART(JP4-C1T)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1 Description"; Value = "Manufacturer"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2 Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://katalog.we-online.de/em/datasheet/6130xx143121.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Created by"; Value = "Karrer Zheng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Created Date"; Value = "29 March 2013"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "W¨¹rth Elektronik eiSos GmbH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "NoPins"; Value = "04"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "partNo"; Value = "613004143121"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND_1 Pin=C22-2
+Added Pin To Net: NetName=GND_1 Pin=C25-2
+Added Pin To Net: NetName=GND_1 Pin=C26-2
+Added Pin To Net: NetName=GND_1 Pin=diot1-1
+Added Pin To Net: NetName=GND_1 Pin=J1-P1
+Added Pin To Net: NetName=NetIC1_5 Pin=J1-P26
+Added Pin To Net: NetName=NetIC1_2 Pin=J1-P27
+Added Pin To Net: NetName=NetIC1_6 Pin=J1-P28
+Added Pin To Net: NetName=NetIC1_3 Pin=J1-P29
+Added Pin To Net: NetName=NetIC1_7 Pin=J1-P30
+Added Pin To Net: NetName=NetIC1_4 Pin=J1-P31
+Added Pin To Net: NetName=NetIC1_10 Pin=J1-P37
+Added Pin To Net: NetName=NetIC1_8 Pin=J1-P39
+Added Pin To Net: NetName=GND_1 Pin=J1-P51
+Added Pin To Net: NetName=V_IN Pin=Q1-2
+Added Pin To Net: NetName=V_IN Pin=Q2-2
+Added Pin To Net: NetName=V_IN Pin=Q3-2
+Added Pin To Net: NetName=GND Pin=R8-2
+Added Pin To Net: NetName=GND_1 Pin=UART-1
+Added Pin To Net: NetName=3.3V Pin=UART-4
+Added Pin To Net: NetName=GND_1 Pin=VR1-3
+Change Net Name : Old Net Name=Net1_1 New Net Name=NetQ1_3
+Change Net Name : Old Net Name=Net2_1 New Net Name=NetQ2_3
+Change Net Name : Old Net Name=Net3_1 New Net Name=NetQ3_3
+Change Net Name : Old Net Name=V_IN New Net Name=24V
+Added Pin To Net: NetName=NetC7_3 Pin=C7-3
+Added Pin To Net: NetName=NetC7_3 Pin=C10-1
+Added Pin To Net: NetName=NetC7_3 Pin=L3-2
+Added Pin To Net: NetName=NetC7_3 Pin=R43-1
+Added Net: Name=NetC7_3
+Added Pin To Net: NetName=NetIC2_1 Pin=IC2-1
+Added Pin To Net: NetName=NetIC2_1 Pin=J1-P11
+Added Pin To Net: NetName=NetIC2_1 Pin=R22-1
+Added Net: Name=NetIC2_1
+Added Pin To Net: NetName=NetIC4_1 Pin=IC4-1
+Added Pin To Net: NetName=NetIC4_1 Pin=J1-P15
+Added Pin To Net: NetName=NetIC4_1 Pin=R46-1
+Added Net: Name=NetIC4_1
+Added Pin To Net: NetName=NetQ4_3 Pin=Q4-3
+Added Pin To Net: NetName=NetQ4_3 Pin=Q5-3
+Added Pin To Net: NetName=NetQ4_3 Pin=Q6-3
+Added Pin To Net: NetName=NetQ4_3 Pin=R9-1
+Added Pin To Net: NetName=NetQ4_3 Pin=R10-2
+Added Net: Name=NetQ4_3
+Added Pin To Net: NetName=U6RX Pin=J1-P98
+Added Pin To Net: NetName=U6RX Pin=UART-2
+Added Net: Name=U6RX
+Added Pin To Net: NetName=U6TX Pin=J1-P97
+Added Pin To Net: NetName=U6TX Pin=UART-3
+Added Net: Name=U6TX
+Added Member To Class: ClassName=Sheet1 Member=Component IC1 IR2136SPBF
+Added Member To Class: ClassName=KIT_STM32F4 Member=Component UART JP4

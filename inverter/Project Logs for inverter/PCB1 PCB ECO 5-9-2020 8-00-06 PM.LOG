@@ -1,0 +1,6 @@
+Removed Member From Class: ClassName=Source Member=D1
+Removed Member From Class: ClassName=Source Member=D2
+Change Component Designator: OldDesignator=D1 NewDesignator=DS1
+Change Component Designator: OldDesignator=D2 NewDesignator=DS2
+Added Member To Class: ClassName=Source Member=Component DS1 Diode
+Added Member To Class: ClassName=Source Member=Component DS2 Diode

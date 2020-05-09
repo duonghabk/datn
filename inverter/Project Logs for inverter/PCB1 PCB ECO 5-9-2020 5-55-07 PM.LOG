@@ -1,0 +1,6 @@
+Change Component Footprint: Designator=L4 Old Footprint=INDPM120120X800N New Footprint=L-DIP-M-10
+Change Component Comment : Designator=L4 Old Comment=CDRH127NP New Comment=L-DIP-1
+Change component parameters (AddParameter): Name = "Value"; Value = "150 mH"; VariantName = "[No Variations]"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Value"; Value = "150 mH"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=Source Member=Component R50 0 ohm

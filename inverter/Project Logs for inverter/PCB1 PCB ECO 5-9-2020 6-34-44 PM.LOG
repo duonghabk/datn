@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=1.6V Pin=IC6-2
+Removed Pin From Net: NetName=5V Pin=IC6-3
+Removed Member From Class: ClassName=Source Member=IC6
+Add component (AddParameter): Name = "Value"; Value = "LM317"; VariantName = "[No Variations]"
+Added Component: Designator=LM317(TO220H3)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "LM317"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=1.6V Pin=LM317-2
+Added Pin To Net: NetName=1.6V Pin=LM317-2
+Added Pin To Net: NetName=5V Pin=LM317-3
+Added Pin To Net: NetName=NetLM317_1 Pin=LM317-1
+Added Pin To Net: NetName=NetLM317_1 Pin=VR1-1
+Added Net: Name=NetLM317_1
+Added Member To Class: ClassName=Source Member=Component LM317

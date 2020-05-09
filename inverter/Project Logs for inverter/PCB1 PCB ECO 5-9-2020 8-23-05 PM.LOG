@@ -1,0 +1,10 @@
+Removed Member From Class: ClassName=Sheet1 Member=DS1
+Removed Member From Class: ClassName=Sheet1 Member=DS2
+Change Component Footprint: Designator=C1 Old Footprint=CA-ALU-2.54 New Footprint=CA-ALU-5R
+Change Component Footprint: Designator=C2 Old Footprint=CA-ALU-2.54 New Footprint=CA-ALU-5R
+Change Component Footprint: Designator=C3 Old Footprint=CA-ALU-2.54 New Footprint=CA-ALU-5R
+Change Component Comment : Designator=C1 Old Comment=1uF New Comment=CN-ALU-DIP
+Change Component Comment : Designator=C2 Old Comment=1uF New Comment=CN-ALU-DIP
+Change Component Comment : Designator=C3 Old Comment=1uF New Comment=CN-ALU-DIP
+Added Member To Class: ClassName=Sheet1 Member=Component D1 Diode
+Added Member To Class: ClassName=Sheet1 Member=Component D2 Diode

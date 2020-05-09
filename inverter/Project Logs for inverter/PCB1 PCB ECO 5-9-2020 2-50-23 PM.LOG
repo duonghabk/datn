@@ -1,0 +1,9 @@
+Added Pin To Net: NetName=GND_1 Pin=J1-P2
+Added Pin To Net: NetName=GND_1 Pin=J1-P5
+Added Pin To Net: NetName=GND_1 Pin=J1-P52
+Added Pin To Net: NetName=GND_1 Pin=J1-P99
+Added Pin To Net: NetName=GND_1 Pin=J1-P100
+Added Room: Name=KIT_STM32F4
+Added Room: Name=Sheet1
+Added Room: Name=Sheet2
+Added Room: Name=Source

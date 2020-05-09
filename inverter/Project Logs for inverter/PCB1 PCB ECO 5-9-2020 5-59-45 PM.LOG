@@ -1,0 +1,8 @@
+Removed Member From Class: ClassName=Source Member=L8
+Removed Member From Class: ClassName=Source Member=L10
+Add component (AddParameter): Name = "Value"; Value = "150 mH"; VariantName = "[No Variations]"
+Added Component: Designator=L9(L01)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "150 mH"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=Source Member=Component L9 150mH
+Added Member To Class: ClassName=Source Member=Component R50 0 ohm

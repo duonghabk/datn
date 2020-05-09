@@ -1,0 +1,4 @@
+Change Component Footprint: Designator=C4 Old Footprint=CA-ALU-2.54 New Footprint=CA-ALU-5R
+Change Component Footprint: Designator=C5 Old Footprint=CA-ALU-2.54 New Footprint=CA-ALU-5R
+Change Component Comment : Designator=C4 Old Comment=1uF New Comment=CN-ALU-DIP
+Change Component Comment : Designator=C5 Old Comment=1uF New Comment=CN-ALU-DIP

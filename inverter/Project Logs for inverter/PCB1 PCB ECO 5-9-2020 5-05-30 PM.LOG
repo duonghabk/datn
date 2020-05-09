@@ -1,0 +1,25 @@
+Removed Pin From Net: NetName=GND_1 Pin=diot1-1
+Removed Pin From Net: NetName=NetBuck1_2 Pin=diot1-2
+Removed Pin From Net: NetName=GND Pin=diot_1-1
+Removed Pin From Net: NetName=Net4_2 Pin=diot_1-2
+Removed Member From Class: ClassName=Source Member=diot_1
+Change Component Footprint: Designator=diot1 Old Footprint=DIO-SMD-106 New Footprint=DIO-1A
+Change Component Comment : Designator=diot1 Old Comment=Diode SMD New Comment=Diode
+Add component (AddParameter): Name = "Code - JEDEC"; Value = "DO-214-AB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "July-2002: Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1N5007"; VariantName = "[No Variations]"
+Added Component: Designator=Diot2(DIO-1A)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Code - JEDEC"; Value = "DO-214-AB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "July-2002: Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1N5007"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=diot1-1
+Added Pin To Net: NetName=Net4_2 Pin=diot1-2
+Added Pin To Net: NetName=GND_1 Pin=Diot2-1
+Added Pin To Net: NetName=NetBuck1_2 Pin=Diot2-2
+Added Member To Class: ClassName=Source Member=Component Diot2 Diode
+Added Member To Class: ClassName=Source Member=Component R50 0 ohm
