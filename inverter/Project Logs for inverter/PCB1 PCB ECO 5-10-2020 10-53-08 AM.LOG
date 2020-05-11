@@ -1,0 +1,3 @@
+Change Component Footprint: Designator=C8 Old Footprint=CA-ALU-2.54 New Footprint=CA-ALU-5R
+Change Component Comment : Designator=C8 Old Comment=10uF New Comment=CN-ALU-DIP
+Added Member To Class: ClassName=Sheet1 Member=Component Q5 IRF840

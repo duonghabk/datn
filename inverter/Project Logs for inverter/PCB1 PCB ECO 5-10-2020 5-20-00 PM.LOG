@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=GND Pin=C22-2
+Removed Pin From Net: NetName=GND Pin=C24-2
+Removed Pin From Net: NetName=GND Pin=C26-2
+Removed Pin From Net: NetName=GND Pin=DS2-1
+Removed Pin From Net: NetName=GND Pin=R50-1
+Removed Pin From Net: NetName=GND Pin=R53-2
+Removed Pin From Net: NetName=GND Pin=R54-2
+Removed Pin From Net: NetName=GND Pin=U1-1
+Removed Pin From Net: NetName=GND Pin=UART-1
+Removed Pin From Net: NetName=GND Pin=VR1-3
+Added Pin To Net: NetName=GND_1 Pin=C22-2
+Added Pin To Net: NetName=GND_1 Pin=C24-2
+Added Pin To Net: NetName=GND_1 Pin=C26-2
+Added Pin To Net: NetName=GND_1 Pin=DS2-1
+Added Pin To Net: NetName=GND_1 Pin=R50-1
+Added Pin To Net: NetName=GND_1 Pin=R53-2
+Added Pin To Net: NetName=GND_1 Pin=R54-2
+Added Pin To Net: NetName=GND_1 Pin=U1-1
+Added Pin To Net: NetName=GND_1 Pin=UART-1
+Added Pin To Net: NetName=GND_1 Pin=VR1-3
+Added Net: Name=GND_1

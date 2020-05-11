@@ -1,0 +1,35 @@
+Removed Pin From Net: NetName=15V Pin=LED1-1
+Removed Pin From Net: NetName=3.3V Pin=LED2-1
+Removed Pin From Net: NetName=5V Pin=LED_1-1
+Removed Member From Class: ClassName=Source Member=LED1
+Removed Member From Class: ClassName=Source Member=LED2
+Removed Member From Class: ClassName=Source Member=LED_1
+Change Component Designator: OldDesignator=LED_Vin1 NewDesignator=L24V
+Add component (AddParameter): Name = "Value"; Value = "LED 3 ly Single Colour"; VariantName = "[No Variations]"
+Added Component: Designator=L3.3V(LED-5-BLUE)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "LED 3 ly Single Colour"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "LED 3 ly Single Colour"; VariantName = "[No Variations]"
+Added Component: Designator=L5V(LED-5-BLUE)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "LED 3 ly Single Colour"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "LED 3 ly Single Colour"; VariantName = "[No Variations]"
+Added Component: Designator=L15V(LED-5-BLUE)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "LED 3 ly Single Colour"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=3.3V Pin=L3.3V-1
+Added Pin To Net: NetName=5V Pin=L5V-1
+Added Pin To Net: NetName=15V Pin=L15V-1
+Change Net Name : Old Net Name=NetLED_Vin1_2 New Net Name=NetL24V_2
+Added Pin To Net: NetName=NetL3.3V_2 Pin=L3.3V-2
+Added Pin To Net: NetName=NetL3.3V_2 Pin=R54-1
+Added Net: Name=NetL3.3V_2
+Added Pin To Net: NetName=NetL5V_2 Pin=L5V-2
+Added Pin To Net: NetName=NetL5V_2 Pin=R53-1
+Added Net: Name=NetL5V_2
+Added Pin To Net: NetName=NetL15V_2 Pin=L15V-2
+Added Pin To Net: NetName=NetL15V_2 Pin=R52-1
+Added Net: Name=NetL15V_2
+Added Member To Class: ClassName=Source Member=Component L3.3V LED
+Added Member To Class: ClassName=Source Member=Component L5V LED
+Added Member To Class: ClassName=Source Member=Component L15V LED
