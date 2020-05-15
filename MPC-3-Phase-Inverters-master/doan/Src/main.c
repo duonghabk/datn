@@ -184,8 +184,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     omega = 2.0 * PI * f;
     Vref_Re = (float_t)((2 * Vref * sin(omega * t_ref) - Vref * sin(omega * t_ref + 2 * PI / 3) - Vref * sin(t_ref * omega - 2 * PI / 3)) / 3);
     Vref_Im = (float_t)((Vref * sin(omega * t_ref + 2 * PI / 3) - Vref * sin(t_ref * omega - 2 * PI / 3)) * 0.57735);
-    t_ref += 1 / fz;
-    if (t_ref == 1 / fz)
+    t_ref += 20 / fz;
+    if (t_ref == 20 / fz)
       t_ref = 0;
   }
   if (htim->Instance == htim3.Instance)
