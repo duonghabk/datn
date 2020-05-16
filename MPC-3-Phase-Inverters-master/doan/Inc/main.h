@@ -38,6 +38,7 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 
+
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -72,7 +73,6 @@ void Error_Handler(void);
 #define SW3_GPIO_Port GPIOD
 /* USER CODE BEGIN Private defines */
 #define PI 3.141593
-
 
 
 /* USER CODE END Private defines */

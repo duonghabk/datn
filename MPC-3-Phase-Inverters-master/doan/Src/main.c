@@ -50,16 +50,18 @@ DMA_HandleTypeDef hdma_adc1;
 
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
-TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-int8_t f = 50;
-int8_t Vref = 15;
-int8_t Vdc = 24;
-float Cfilter = 0.00022, Lfilter = 0.01;
+float Value_REF[400] =
+{0.0000,  0.0157,  0.0314,  0.0471,  0.0628,  0.0785,  0.0941,  0.1097,  0.1253,  0.1409,  0.1564,  0.1719,  0.1874,  0.2028,  0.2181,  0.2334,  0.2487,  0.2639,  0.2790,  0.2940,  0.3090,  0.3239,  0.3387,  0.3535,  0.3681,  0.3827,  0.3971,  0.4115,  0.4258,  0.4399,  0.4540,  0.4679,  0.4818,  0.4955,  0.5090,  0.5225,  0.5358,  0.5490,  0.5621,  0.5750,  0.5878,  0.6004,  0.6129,  0.6252,  0.6374,  0.6494,  0.6613,  0.6730,  0.6845,  0.6959,  0.7071,  0.7181,  0.7290,  0.7396,  0.7501,  0.7604,  0.7705,  0.7804,  0.7902,  0.7997,  0.8090,  0.8181,  0.8271,  0.8358,  0.8443,  0.8526,  0.8607,  0.8686,  0.8763,  0.8838,  0.8910,  0.8980,  0.9048,  0.9114,  0.9178,  0.9239,  0.9298,  0.9354,  0.9409,  0.9461,  0.9511,  0.9558,  0.9603,  0.9646,  0.9686,  0.9724,  0.9759,  0.9792,  0.9823,  0.9851,  0.9877,  0.9900,  0.9921,  0.9940,  0.9956,  0.9969,  0.9980,  0.9989,  0.9995,  0.9999,  1.0000,  0.9999,  0.9995,  0.9989,  0.9980,  0.9969,  0.9956,  0.9940,  0.9921,  0.9900,  0.9877,  0.9851,  0.9823,  0.9792,  0.9759,  0.9724,  0.9686,  0.9646,  0.9603,  0.9558,  0.9511,  0.9461,  0.9409,  0.9354,  0.9298,  0.9239,  0.9178,  0.9114,  0.9048,  0.8980,  0.8910,  0.8838,  0.8763,  0.8686,  0.8607,  0.8526,  0.8443,  0.8358,  0.8271,  0.8181,  0.8090,  0.7997,  0.7902,  0.7804,  0.7705,  0.7604,  0.7501,  0.7396,  0.7290,  0.7181,  0.7071,  0.6959,  0.6845,  0.6730,  0.6613,  0.6494,  0.6374,  0.6252,  0.6129,  0.6004,  0.5878,  0.5750,  0.5621,  0.5490,  0.5358,  0.5225,  0.5090,  0.4955,  0.4818,  0.4679,  0.4540,  0.4399,  0.4258,  0.4115,  0.3971,  0.3827,  0.3681,  0.3535,  0.3387,  0.3239,  0.3090,  0.2940,  0.2790,  0.2639,  0.2487,  0.2334,  0.2181,  0.2028,  0.1874,  0.1719,  0.1564,  0.1409,  0.1253,  0.1097,  0.0941,  0.0785,  0.0628,  0.0471,  0.0314,  0.0157,  0.0000,  -0.0157,  -0.0314,  -0.0471,  -0.0628,  -0.0785,  -0.0941,  -0.1097,  -0.1253,  -0.1409,  -0.1564,  -0.1719,  -0.1874,  -0.2028,  -0.2181,  -0.2334,  -0.2487,  -0.2639,  -0.2790,  -0.2940,  -0.3090,  -0.3239,  -0.3387,  -0.3535,  -0.3681,  -0.3827,  -0.3971,  -0.4115,  -0.4258,  -0.4399,  -0.4540,  -0.4679,  -0.4818,  -0.4955,  -0.5090,  -0.5225,  -0.5358,  -0.5490,  -0.5621,  -0.5750,  -0.5878,  -0.6004,  -0.6129,  -0.6252,  -0.6374,  -0.6494,  -0.6613,  -0.6730,  -0.6845,  -0.6959,  -0.7071,  -0.7181,  -0.7290,  -0.7396,  -0.7501,  -0.7604,  -0.7705,  -0.7804,  -0.7902,  -0.7997,  -0.8090,  -0.8181,  -0.8271,  -0.8358,  -0.8443,  -0.8526,  -0.8607,  -0.8686,  -0.8763,  -0.8838,  -0.8910,  -0.8980,  -0.9048,  -0.9114,  -0.9178,  -0.9239,  -0.9298,  -0.9354,  -0.9409,  -0.9461,  -0.9511,  -0.9558,  -0.9603,  -0.9646,  -0.9686,  -0.9724,  -0.9759,  -0.9792,  -0.9823,  -0.9851,  -0.9877,  -0.9900,  -0.9921,  -0.9940,  -0.9956,  -0.9969,  -0.9980,  -0.9989,  -0.9995,  -0.9999,  -1.0000,  -0.9999,  -0.9995,  -0.9989,  -0.9980,  -0.9969,  -0.9956,  -0.9940,  -0.9921,  -0.9900,  -0.9877,  -0.9851,  -0.9823,  -0.9792,  -0.9759,  -0.9724,  -0.9686,  -0.9646,  -0.9603,  -0.9558,  -0.9511,  -0.9461,  -0.9409,  -0.9354,  -0.9298,  -0.9239,  -0.9178,  -0.9114,  -0.9048,  -0.8980,  -0.8910,  -0.8838,  -0.8763,  -0.8686,  -0.8607,  -0.8526,  -0.8443,  -0.8358,  -0.8271,  -0.8181,  -0.8090,  -0.7997,  -0.7902,  -0.7804,  -0.7705,  -0.7604,  -0.7501,  -0.7396,  -0.7290,  -0.7181,  -0.7071,  -0.6959,  -0.6845,  -0.6730,  -0.6613,  -0.6494,  -0.6374,  -0.6252,  -0.6129,  -0.6004,  -0.5878,  -0.5750,  -0.5621,  -0.5490,  -0.5358,  -0.5225,  -0.5090,  -0.4955,  -0.4818,  -0.4679,  -0.4540,  -0.4399,  -0.4258,  -0.4115,  -0.3971,  -0.3827,  -0.3681,  -0.3535,  -0.3387,  -0.3239,  -0.3090,  -0.2940,  -0.2790,  -0.2639,  -0.2487,  -0.2334,  -0.2181,  -0.2028,  -0.1874,  -0.1719,  -0.1564,  -0.1409,  -0.1253,  -0.1097,  -0.0941,  -0.0785,  -0.0628,  -0.0471,  -0.0314,  -0.0157};
 
+int16_t Index = 0;
+int8_t Vref = 12;
+int8_t Vdc = 24;
+
+float Cfilter = 0.00022, Lfilter = 0.01;
 uint8_t states[8][3] = {{1, 0, 0}, {1, 1, 0}, {0, 1, 0}, {0, 1, 1}, {0, 0, 1}, {1, 0, 1}, {1, 1, 1}};
 //Frequency cut-off
 float_t fz = 20000;
@@ -82,7 +84,6 @@ static void MX_ADC1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_USART1_UART_Init(void);
-static void MX_TIM4_Init(void);
 /* USER CODE BEGIN PFP */
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -108,10 +109,10 @@ PUTCHAR_PROTOTYPE
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-float_t Aq[4] = {0.99092, -0.01994, 0.90634, 0.99092};
-float_t Bq[2] = {0.01994, 0.00908};
-float_t Bdq[2] = {0.00918, -0.90634};
-float_t g_opt;
+float Aq[4] = {0.99092, -0.01994, 0.90634, 0.99092};
+float Bq[2] = {0.01994, 0.00908};
+float Bdq[2] = {0.00918, -0.90634};
+float g_opt = 1000;
 float_t Vc_sensor_Re, Ifilter_sensor_Re, Vc_sensor_Im, Ifilter_sensor_Im;
 float_t V_old_Re = 0, V_old_Im = 0, If_old_Re = 0, If_old_Im = 0;
 _Bool x_opt[3];
@@ -135,6 +136,17 @@ float_t Io_Re,Io_Im,Vc_Temp_Re,Vc_Temp_Im;
 float_t Sw_Re,Sw_Im,G,Vc_Re,Vc_Im,Vi_Re,Vi_Im;
 void MPC_control()
 {
+	if(Index < 400)
+	{
+		Vref_Re = Vref*Value_REF[Index];
+		if(Index < 100)
+			Vref_Im  = Vref*Value_REF[Index +300];
+		else
+			Vref_Im = Vref*Value_REF[Index -100];
+	}
+	else
+		Index = 0;
+	Index++;
   Vc_sensor_Re = (float_t)Calc_Real(Va, Vb, Vc);
   Ifilter_sensor_Re = (float_t)Calc_Real(Ia, Ib, Ic);
   Vc_sensor_Im = (float_t)Calc_Image(Vb, Vc);
@@ -179,15 +191,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     Ib = Calc_Current_ADC(ADC_Read[4]);
     Ic = Calc_Current_ADC(ADC_Read[5]);
   }
-  if (htim->Instance == htim4.Instance)
-  {
-    omega = 2.0 * PI * f;
-    Vref_Re = (float_t)((2 * Vref * sin(omega * t_ref) - Vref * sin(omega * t_ref + 2 * PI / 3) - Vref * sin(t_ref * omega - 2 * PI / 3)) / 3);
-    Vref_Im = (float_t)((Vref * sin(omega * t_ref + 2 * PI / 3) - Vref * sin(t_ref * omega - 2 * PI / 3)) * 0.57735);
-    t_ref += 20 / fz;
-    if (t_ref == 20 / fz)
-      t_ref = 0;
-  }
+//  if (htim->Instance == htim4.Instance)
+//  {
+//    omega = 2.0 * PI * f;
+//    Vref_Re = (float_t)((2 * Vref * sin(omega * t_ref) - Vref * sin(omega * t_ref + 2 * PI / 3) - Vref * sin(t_ref * omega - 2 * PI / 3)) / 3);
+//    Vref_Im = (float_t)((Vref * sin(omega * t_ref + 2 * PI / 3) - Vref * sin(t_ref * omega - 2 * PI / 3)) * 0.57735);
+//    t_ref += 20 / fz;
+//    if (t_ref == 20 / fz)
+//      t_ref = 0;
+//  }
   if (htim->Instance == htim3.Instance)
   {
     MPC_control();
@@ -229,7 +241,6 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   MX_USART1_UART_Init();
-  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_TIM_Base_Start_IT(&htim3);
@@ -446,7 +457,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 0;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 0;
+  htim3.Init.Period = 4999;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
@@ -467,51 +478,6 @@ static void MX_TIM3_Init(void)
   /* USER CODE BEGIN TIM3_Init 2 */
 
   /* USER CODE END TIM3_Init 2 */
-
-}
-
-/**
-  * @brief TIM4 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_TIM4_Init(void)
-{
-
-  /* USER CODE BEGIN TIM4_Init 0 */
-
-  /* USER CODE END TIM4_Init 0 */
-
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-
-  /* USER CODE BEGIN TIM4_Init 1 */
-
-  /* USER CODE END TIM4_Init 1 */
-  htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 999;
-  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 99;
-  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN TIM4_Init 2 */
-
-  /* USER CODE END TIM4_Init 2 */
 
 }
 
