@@ -112,7 +112,6 @@ PUTCHAR_PROTOTYPE
 float Aq[4] = {0.99092, -0.01994, 0.90634, 0.99092};
 float Bq[2] = {0.01994, 0.00908};
 float Bdq[2] = {0.00918, -0.90634};
-float g_opt = 1000;
 float_t Vc_sensor_Re, Ifilter_sensor_Re, Vc_sensor_Im, Ifilter_sensor_Im;
 float_t V_old_Re = 0, V_old_Im = 0, If_old_Re = 0, If_old_Im = 0;
 _Bool x_opt[3];
@@ -147,6 +146,7 @@ void MPC_control()
 	else
 		Index = 0;
 	Index++;
+  float g_opt = 1000;
   Vc_sensor_Re = (float_t)Calc_Real(Va, Vb, Vc);
   Ifilter_sensor_Re = (float_t)Calc_Real(Ia, Ib, Ic);
   Vc_sensor_Im = (float_t)Calc_Image(Vb, Vc);
