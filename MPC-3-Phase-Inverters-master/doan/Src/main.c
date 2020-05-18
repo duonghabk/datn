@@ -67,7 +67,7 @@ uint8_t states[8][3] = {{1, 0, 0}, {1, 1, 0}, {0, 1, 0}, {0, 1, 1}, {0, 0, 1}, {
 float_t fz = 20000;
 uint16_t ADC_Read[6];
 float_t Va, Vb, Vc, Ia, Ib, Ic;
-float_t t_ref = 0, omega;
+
 float_t Vref_Re, Vref_Im;
 //Uart
 char Rx_data;
